@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 from bluepy import btle
 import time
-import struct
 
 # Change this to the MAC address of your tracker
 tracker_addr = '3C:38:F4:AE:B6:3D'
