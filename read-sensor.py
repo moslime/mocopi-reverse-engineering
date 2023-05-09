@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 from bluepy import btle
 import time
+import struct
 
+# Change this to the MAC address of your tracker
 tracker_addr = '3C:38:F4:AE:B6:3D'
+
 cmd_uuid = '0000ff00-0000-1000-8000-00805f9b34fb'
 
-
+# Changing this to false will show each byte sperately as integers
 formatted = True
 
 class MyDelegate(btle.DefaultDelegate):
@@ -25,7 +28,7 @@ class MyDelegate(btle.DefaultDelegate):
         print("Unknown 10-11 : " + str(int.from_bytes(data[10:12], "little")))
         print("Unknown 12-13 : " + str(int.from_bytes(data[12:14], "little")))
         print("Unknown 14-15 : " + str(int.from_bytes(data[14:16], "little")))
-        print("")
+        print()
         print("Unknown 16-17 : " + str(int.from_bytes(data[16:18], "little")))
         print("Unknown 18-19 : " + str(int.from_bytes(data[18:20], "little")))
 
@@ -58,16 +61,15 @@ class MyDelegate(btle.DefaultDelegate):
 p = btle.Peripheral(tracker_addr)
 p.setDelegate( MyDelegate() )
 
-#Start Notifications
+#Get Service
 cmd = p.getServiceByUUID(cmd_uuid)
 cmd_ch = cmd.getCharacteristics()[1]
-cmd_ch.write(bytearray([0x7e, 0x03, 0x18, 0xd6, 0x01, 0x00, 0x00]), True)
-#Give tracker time to start sending data
-time.sleep(3)
+
+#Send Commands
+cmd_ch.write(bytearray([0x7e, 0x03, 0x18, 0xd6, 0x01, 0x00, 0x00]), True) #Start Stream
 
 while True:
     if p.waitForNotifications(1.0):
-        # handleNotification() was called
         continue
 
     print("Waiting...")
