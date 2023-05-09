@@ -2,7 +2,7 @@ The data from the sensor is sent thru the BLE UUID `0000ff00-0000-1000-8000-0080
 
 Here's what a packet usually looks like: `0xB0 0x7B 0xB8 0x6F 0x4B 0x61 0x5D 0x17 0x2B 0x04 0xE4 0x09 0x34 0x12 0xF4 0x17 0x2A 0x04 0x41 0x0A`
 
-Here's how I intepret the packet, with values converted to decimals. I'm not 100% sure this is the correct structure but it seems the most sensible:
+Here's how I intepret the packet, with values converted to integers. I'm not 100% sure this is the correct structure but it seems the most sensible:
 
 1     - `0xB0` - 176 - Unknown, sometimes changes to 0x30 under unknown circumstances
 
