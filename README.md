@@ -1,5 +1,6 @@
 # mocopi-reverse-engineering
-Reverse engineering the mocopi trackers, with the eventual goal of streaming the data to SlimeVR, forgoing the need for a phone and the mocopi app
+Reverse engineering the mocopi trackers, with the eventual goal of streaming the data to SlimeVR, forgoing the need for a phone and the mocopi app\
+If you want to play around with the data, head over to the `scripts` folder and check out the examples there.
 
 
 ## General Info
