@@ -1,22 +1,25 @@
-The data from the sensor is sent thru the BLE UUID `0000ff00-0000-1000-8000-00805f9b34fb`. It's 20 bytes in length and the data is little endian
+To start the data stream, you need to send a command to a certain BLE UUID. Look at the python scripts for examples.
+The data from the sensor is sent thru the BLE UUID `0000ff00-0000-1000-8000-00805f9b34fb`.
+
+The data that comes from the sensor in little endian format and each part is a signed decimal (unless otherwise noted)
 
 Here's what a packet usually looks like: `0xB0 0x7B 0xB8 0x6F 0x4B 0x61 0x5D 0x17 0x2B 0x04 0xE4 0x09 0x34 0x12 0xF4 0x17 0x2A 0x04 0x41 0x0A`
 
-Here's how I intepret the packet, with values converted to integers. I'm not 100% sure this is the correct structure but it seems the most sensible:
+Here's how the packet is structured:
 
 1     - `0xB0` - 176 - Unknown, sometimes changes to 0x30 under unknown circumstances
 
-2-8   - `0x7B 0xB8 0x6F 0x4B 0x61 0x5D 0x17` - 6576596923168891 - counter that increases by 1 with every packet sent
+2-8   - `0x7B 0xB8 0x6F 0x4B 0x61 0x5D 0x17` - 6576596923168891 - Counter that increases by 1 with every packet sent. Is a unsigned integer 
 
-9-10  - `0x2B 0x04` - 1067 - Unknown, changes with movement
+9-10  - `0x2B 0x04` - 1067 - W value of a quaternion
 
-11-12 - `0xE4 0x09` - 2532 - Unknown, changes with movement
+11-12 - `0xE4 0x09` - 2532 - X value of a quaternion
 
-13-14 - `0x34 0x12` - 4660 - Unknown, changes with movement
+13-14 - `0x34 0x12` - 4660 - Y value of a quaternion
 
-15-16 - `0xF4 0x17` - 6132 - Unknown, changes with movement
+15-16 - `0xF4 0x17` - 6132 - Z value of a quaternion
 
-17-18 - `0x2A 0x04` - 1066 - Seems to be the value of 9-10 from the previous packet
+17-18 - `0x2A 0x04` - 1066 - W value from the previous packet
 
-19-20 - `0x41 0x0A` - 2625 - Seems to be the value of 11-12 from the previous packet
+19-20 - `0x41 0x0A` - 2625 - X value from the previous packet
 

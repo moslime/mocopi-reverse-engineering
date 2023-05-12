@@ -4,11 +4,10 @@ import time
 
 # Change this to the MAC address of your tracker
 tracker_addr = '3C:38:F4:AE:B6:3D'
-
 cmd_uuid = '0000ff00-0000-1000-8000-00805f9b34fb'
 
 # Changing this to false will show each byte sperately as integers
-formatted = True
+formatted = True	
 
 class MyDelegate(btle.DefaultDelegate):
     def __init__(self):
@@ -23,14 +22,15 @@ class MyDelegate(btle.DefaultDelegate):
         print("Unknown 0     : " + str(int(data[0])))
         print("Counter 1-7   : " + str(int.from_bytes(data[1:8], "little")))
         print()
-        print("Unknown 8-9   : " + str(int.from_bytes(data[8:10], "little")))
-        print("Unknown 10-11 : " + str(int.from_bytes(data[10:12], "little")))
-        print("Unknown 12-13 : " + str(int.from_bytes(data[12:14], "little")))
-        print("Unknown 14-15 : " + str(int.from_bytes(data[14:16], "little")))
+        print("Quat W  8-9   : " + str(int.from_bytes(data[8:10], "little")))
+        print("Quat X  10-11 : " + str(int.from_bytes(data[10:12], "little")))
+        print("Quat Y  12-13 : " + str(int.from_bytes(data[12:14], "little")))
+        print("Quat Z  14-15 : " + str(int.from_bytes(data[14:16], "little")))
         print()
-        print("Unknown 16-17 : " + str(int.from_bytes(data[16:18], "little")))
-        print("Unknown 18-19 : " + str(int.from_bytes(data[18:20], "little")))
-
+        print("From last packet:")
+        print("Quat W  16-17 : " + str(int.from_bytes(data[16:18], "little")))
+        print("Quat X  18-19 : " + str(int.from_bytes(data[18:20], "little")))
+        
        else:
         print("0 : " + str(int(data[0])))
         print("1 : " + str(int(data[1])))
