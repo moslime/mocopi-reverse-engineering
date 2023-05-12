@@ -1,8 +1,7 @@
 # Scripts
 
 ## These scripts all assume you're running on linux with the `bluepy` python module  installed.
-
-### To connect your tracker, just pair it like any other bluetooth device using your distro's bluetooth manager or `bluetoothctl`. You may need to restart bluetooth or the tracker itself to connect after pairing.
+To connect your tracker, just pair it like any other bluetooth device using your distro's bluetooth manager or `bluetoothctl`. You may need to restart bluetooth or the tracker itself to connect after pairing.
 
 ### `read-sensor.py` - Prints the raw data from the sensor as unsigned integers
 Edit these settings in the file before use:\
