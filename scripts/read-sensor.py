@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 from bluepy import btle
+from scipy.interpolate import interp1d
 import time
 
 # Change this to the MAC address of your tracker
@@ -9,6 +10,11 @@ cmd_uuid = '0000ff00-0000-1000-8000-00805f9b34fb'
 # Changing this to false will show each byte sperately as integers
 formatted = True	
 
+m = interp1d([-8192,8192],[-1,1])
+
+def hexToQuat(bytes):
+    return -m(int.from_bytes(bytes, byteorder='little', signed=True))
+    
 class MyDelegate(btle.DefaultDelegate):
     def __init__(self):
         btle.DefaultDelegate.__init__(self)
@@ -18,40 +24,37 @@ class MyDelegate(btle.DefaultDelegate):
        print("==============================")
        print("Raw Hex       : " + ''.join('{:02X}'.format(a) for a in data))
        if formatted:
-        #print("Timestamp: " + str(time.time()))
         print("Unknown 0     : " + str(int(data[0])))
         print("Counter 1-7   : " + str(int.from_bytes(data[1:8], "little")))
         print()
-        print("Quat W  8-9   : " + str(int.from_bytes(data[8:10], "little")))
-        print("Quat X  10-11 : " + str(int.from_bytes(data[10:12], "little")))
-        print("Quat Y  12-13 : " + str(int.from_bytes(data[12:14], "little")))
-        print("Quat Z  14-15 : " + str(int.from_bytes(data[14:16], "little")))
+        print("Quat W  8-9   : " + str(hexToQuat(data[8:10])))
+        print("Quat X  10-11 : " + str(hexToQuat(data[10:12])))
+        print("Quat Y  12-13 : " + str(hexToQuat(data[12:14])))
+        print("Quat Z  14-15 : " + str(hexToQuat(data[14:16])))	
         print()
         print("From last packet:")
-        print("Quat W  16-17 : " + str(int.from_bytes(data[16:18], "little")))
-        print("Quat X  18-19 : " + str(int.from_bytes(data[18:20], "little")))
-        
+        print("Quat W  16-17 : " + str(hexToQuat(data[16:18])))
+        print("Quat X  18-19 : " + str(hexToQuat(data[18:20])))
+        print("Quat Y  20-21 : " + str(hexToQuat(data[20:22])))
+        print("Quat Z  22-23 : " + str(hexToQuat(data[22:24])))
+        print()
+        print("Unknown:")        
+        print("24 : " + str(int(data[24])))
+        print("25 : " + str(int(data[25])))
+        print("26 : " + str(int(data[26])))
+        print("27 : " + str(int(data[27])))
+        print("28 : " + str(int(data[28])))
+        print("29 : " + str(int(data[29])))
+        print("30 : " + str(int(data[30])))
+        print("31 : " + str(int(data[31])))
+        print("32 : " + str(int(data[32])))
+        print("33 : " + str(int(data[33])))
+        print("34 : " + str(int(data[34])))
+        print("35 : " + str(int(data[35])))
+
        else:
-        print("0 : " + str(int(data[0])))
-        print("1 : " + str(int(data[1])))
-        print("2 : " + str(int(data[2])))
-        print("3 : " + str(int(data[3])))
-        print("4 : " + str(int(data[4])))
-        print("5 : " + str(int(data[5])))
-        print("6 : " + str(int(data[6])))
-        print("7 : " + str(int(data[7])))
-        print("8 : " + str(int(data[8])))
-        print("9 : " + str(int(data[9])))
-        print("10: " + str(int(data[10])))
-        print("11: " + str(int(data[11])))
-        print("12: " + str(int(data[12])))
-        print("13: " + str(int(data[13])))
-        print("14: " + str(int(data[14])))
-        print("15: " + str(int(data[15])))
-        print("16: " + str(int(data[16])))
-        print("17: " + str(int(data[17])))
-        print("18: " + str(int(data[18])))
-        print("19: " + str(int(data[19])))
+        for i in data:
+         print(i)
 
      except:
         print("Exception")
@@ -59,7 +62,7 @@ class MyDelegate(btle.DefaultDelegate):
      print("")
 p = btle.Peripheral(tracker_addr)
 p.setDelegate( MyDelegate() )
-
+p.setMTU(50)
 #Get Service
 cmd = p.getServiceByUUID(cmd_uuid)
 cmd_ch = cmd.getCharacteristics()[1]

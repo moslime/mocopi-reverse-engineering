@@ -3,23 +3,43 @@ The data from the sensor is sent thru the BLE UUID `0000ff00-0000-1000-8000-0080
 
 The data that comes from the sensor in little endian format and each part is a signed decimal (unless otherwise noted)
 
-Here's what a packet usually looks like: `0xB0 0x7B 0xB8 0x6F 0x4B 0x61 0x5D 0x17 0x2B 0x04 0xE4 0x09 0x34 0x12 0xF4 0x17 0x2A 0x04 0x41 0x0A`
+Here's an example of what a packet looks like: 
+`0xB0 0x46 0x3E 0x63 0xD9 0x09 0x5A 0x17 0x87 0x15 0x80 0xE8 0x40 0x00 0x27 0x02 0x87 0x15 0x80 0xE8  0x27 0x02 0xE5 0xAB 0x36 0xB6 0x75 0xB2 0xD1 0xB0 0x22 0xB6 0x17 0x9A`
 
 Here's how the packet is structured:
 
 1     - `0xB0` - 176 - Unknown, sometimes changes to 0x30 under unknown circumstances
 
-2-8   - `0x7B 0xB8 0x6F 0x4B 0x61 0x5D 0x17` - 6576596923168891 - Counter that increases by 1 with every packet sent. Is a unsigned integer 
+2-8   - `0x46 0x3E 0x63 0xD9 0x09 0x5A 0x17` - 6572922812710470 - Counter that increases by 1 with every packet sent. Is a unsigned integer 
 
-9-10  - `0x2B 0x04` - 1067 - W value of a quaternion
+9-10  - `0x87 0x15` - -0.6727294921875 - W value of a quaternion
 
-11-12 - `0xE4 0x09` - 2532 - X value of a quaternion
+11-12 - `0x80 0xE8` - 0.734375         - X value of a quaternion
 
-13-14 - `0x34 0x12` - 4660 - Y value of a quaternion
+13-14 - `0x40 0x00` - -0.0078125       - Y value of a quaternion
 
-15-16 - `0xF4 0x17` - 6132 - Z value of a quaternion
+15-16 - `0x27 0x02` - -0.0672607421875 - Z value of a quaternion
 
-17-18 - `0x2A 0x04` - 1066 - W value from the previous packet
+17-18 - `0x87 0x15` - -0.6727294921875 - W value from the previous packet
 
-19-20 - `0x41 0x0A` - 2625 - X value from the previous packet
+19-20 - `0x80 0xE8` - 0.734375         - X value from the previous packet
+
+21-22 - `0x40 0x00` - -0.0078125       - Y value from the previous packet
+
+23-24 - `0x27 0x02` - -0.0672607421875 - Z value from the previous packet
+
+
+All of the following values are unknown. Here they're represented as unsigned ints
+25 - 0xE5 - 229
+26 - 0xAB - 171
+27 - 0x36 - 54
+28 - 0xB6 - 182
+29 - 0x75 - 117
+30 - 0xB2 - 178
+31 - 0xD1 - 209
+32 - 0xB0 - 176
+33 - 0x22 - 34
+34 - 0xB6 - 182
+35 - 0x17 - 23
+36 - 0x9A - 154
 
