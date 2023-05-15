@@ -16,3 +16,6 @@ BLE SoC - Might be the [DA14683](https://www.renesas.com/us/en/products/wireless
 
 IMUs (unsure if one or both are present) - [BMI270](https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bmi270-fl000.pdf), [ICM40608](https://static6.arrow.com/aropdfconversion/c4a55e5ba65360490f9914c80186aa28bc5c3857/icm-40608.pdf)\
 (Found by running strings on a firmware update embedded in the app)
+
+## Credits
+Huge thanks to PlatinumVR#9252 for reaching out and helping me get this all going.
