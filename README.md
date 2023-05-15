@@ -4,6 +4,7 @@ If you want to play around with the data, head over to the `scripts` folder and 
 
 
 ## General Info
+- The batteries in the trackers last around 18 hours and charge from 0-100 in around 50mins.
 - At a hardware level (probably firmware too) the sensors are all identical. The only difference is the colored plastic circle and the app will even let you assign a tracker to a different body part.
 - The sensors can be factory reset by quickly pressing the button 10-15 times (or until it blinks red and blue)
 - The sensors self-calibrate when the command to start the data stream is sent. It takes about a second to calibrate before the data starts streaming.
