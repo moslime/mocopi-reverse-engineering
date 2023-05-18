@@ -10,10 +10,12 @@ cmd_uuid = '0000ff00-0000-1000-8000-00805f9b34fb'
 # Changing this to false will show each byte sperately as integers
 formatted = True	
 
-m = interp1d([-8192,8192],[-1,1])
+quatRange = interp1d([-8192,8192],[-1,1])
 
 def hexToQuat(bytes):
-    return -m(int.from_bytes(bytes, byteorder='little', signed=True))
+    return -quatRange(int.from_bytes(bytes, byteorder='little', signed=True))
+def hexToInt(bytes):
+    return int.from_bytes(bytes, byteorder='little', signed=True)
     
 class MyDelegate(btle.DefaultDelegate):
     def __init__(self):
@@ -24,7 +26,7 @@ class MyDelegate(btle.DefaultDelegate):
        print("==============================")
        print("Raw Hex       : " + ''.join('{:02X}'.format(a) for a in data))
        if formatted:
-        print("Unknown 0     : " + str(int(data[0])))
+        #print("Unknown 0     : " + str(int(data[0])))
         print("Counter 1-7   : " + str(int.from_bytes(data[1:8], "little")))
         print()
         print("Quat W  8-9   : " + str(hexToQuat(data[8:10])))
@@ -38,7 +40,14 @@ class MyDelegate(btle.DefaultDelegate):
         print("Quat Y  20-21 : " + str(hexToQuat(data[20:22])))
         print("Quat Z  22-23 : " + str(hexToQuat(data[22:24])))
         print()
-        print("Unknown:")        
+        print("Unknown:")
+
+        print("24 - 25 : " + str(hexToInt(data[24:26])))
+        print("26 - 27 : " + str(hexToInt(data[26:28])))
+        print("28 - 29 : " + str(hexToInt(data[28:30])))
+        print("30 - 31 : " + str(hexToInt(data[30:32])))
+        print("32 - 33 : " + str(hexToInt(data[32:34])))
+        print("34 - 35 : " + str(hexToInt(data[34:36])))
         print("24 : " + str(int(data[24])))
         print("25 : " + str(int(data[25])))
         print("26 : " + str(int(data[26])))
@@ -60,9 +69,10 @@ class MyDelegate(btle.DefaultDelegate):
         print("Exception")
      print("==============================")
      print("")
+
 p = btle.Peripheral(tracker_addr)
 p.setDelegate( MyDelegate() )
-p.setMTU(50)
+p.setMTU(40)
 #Get Service
 cmd = p.getServiceByUUID(cmd_uuid)
 cmd_ch = cmd.getCharacteristics()[1]

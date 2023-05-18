@@ -3,6 +3,7 @@ from bluepy import btle
 from scipy.interpolate import interp1d
 import socket
 import time
+import threading
 
 # Change this to the MAC address of your tracker
 tracker_addr = '3C:38:F4:AE:B6:3D'
@@ -12,7 +13,7 @@ UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
 
 # Whether or not quaternions should be printed
-debug = False
+debug = True
 
 cmd_uuid = '0000ff00-0000-1000-8000-00805f9b34fb'
 m = interp1d([-8192,8192],[-1,1])
@@ -33,7 +34,7 @@ class NotificationHandler(btle.DefaultDelegate):
        quant_C = hexToQuat(data[14:16])
        msg = "w" + str(quant_W) + "wa" + str(quant_A) + "ab" + str(quant_B) + "bc" + str(quant_C) + "c"
        sock.sendto(bytes(msg, "utf-8"), (UDP_IP, UDP_PORT))
-       
+
        if debug:
          print("==============================")
          print("Raw Hex       : " + ''.join('{:02X}'.format(a) for a in data))
@@ -66,7 +67,6 @@ cmd_ch = cmd.getCharacteristics()[1]
 cmd_ch.write(bytearray([0x7e, 0x03, 0x18, 0xd6, 0x01, 0x00, 0x00]), True) #Start Stream
 
 while True:
-    if p.waitForNotifications(1.0):
-        continue
-
-    print("Waiting...")
+     if p.waitForNotifications(1.0):
+         continue
+     print("Waiting...")
