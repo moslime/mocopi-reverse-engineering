@@ -3,6 +3,12 @@
 ## These scripts all assume you're running on linux with the `bluepy` and `scipy` python modules installed.
 To connect your tracker, just pair it like any other bluetooth device using your distro's bluetooth manager or `bluetoothctl`. You may need to restart bluetooth or the tracker itself to connect after pairing.
 
+### `mocopi-to-slime-POC.py` - Early prototype for getting Mocopi data into SlimeVR
+This is a very early prototype of the software that will send Mocopi data to slime. Something about the rotation of the tracker isn't correct so calibration doesn't work correctly and it's not actually usable yet.\
+Edit these settings in the file before use:\
+`tracker_addr` - Put the MAC address of your tracker here\
+`UDP_IP` - Set this to the IP that the SlimeVR server is running on
+
 ### `read-sensor.py` - Prints the raw data from the sensor as unsigned integers
 Edit these settings in the file before use:\
 `tracker_addr` - Put the MAC address of your tracker here\
