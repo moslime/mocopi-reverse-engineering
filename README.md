@@ -2,7 +2,7 @@
 Reverse engineering the mocopi trackers, with the eventual goal of streaming the data to SlimeVR, forgoing the need for a phone and the mocopi app\
 If you want to play around with the data, head over to the `scripts` folder and check out the examples there.
 
-## Go check out [moslime](https://github.com/lmore377/moslime)!
+## Go check out [moslime](https://github.com/lmore377/moslime)! It's the project that this repo was created for in the first place.
 
 ## Disclaimer
 Mocopi is a trademark owned by Sony. None of this is endorsed by Sony, nor are they affiliated with the people associated with this repository. All info in this repository is provided as is, without warranty. Nothing here should cause damage to your trackers; however, only the info in this repository if you agree to assume the risks therein.
