@@ -2,7 +2,7 @@
 from bluepy import btle
 from scipy.interpolate import interp1d
 import time
-
+import numpy as np
 # Change this to the MAC address of your tracker
 tracker_addr = '3C:38:F4:AE:B6:3D'
 cmd_uuid = '0000ff00-0000-1000-8000-00805f9b34fb'
@@ -14,6 +14,8 @@ quatRange = interp1d([-8192,8192],[-1,1])
 
 def hexToQuat(bytes):
     return -quatRange(int.from_bytes(bytes, byteorder='little', signed=True))
+def hexToFloat(bytes):
+    return np.frombuffer(bytes, dtype=np.float16)
 def hexToInt(bytes):
     return int.from_bytes(bytes, byteorder='little', signed=True)
     
@@ -42,12 +44,12 @@ class MyDelegate(btle.DefaultDelegate):
         print()
         print("Unknown:")
 
-        print("24 - 25 : " + str(hexToInt(data[24:26])))
-        print("26 - 27 : " + str(hexToInt(data[26:28])))
-        print("28 - 29 : " + str(hexToInt(data[28:30])))
-        print("30 - 31 : " + str(hexToInt(data[30:32])))
-        print("32 - 33 : " + str(hexToInt(data[32:34])))
-        print("34 - 35 : " + str(hexToInt(data[34:36])))
+        print("24 - 25 : " + str(hexToFloat(data[24:26])))
+        print("26 - 27 : " + str(hexToFloat(data[26:28])))
+        print("28 - 29 : " + str(hexToFloat(data[28:30])))
+        print("30 - 31 : " + str(hexToFloat(data[30:32])))
+        print("32 - 33 : " + str(hexToFloat(data[32:34])))
+        print("34 - 35 : " + str(hexToFloat(data[34:36])))
         print("24 : " + str(int(data[24])))
         print("25 : " + str(int(data[25])))
         print("26 : " + str(int(data[26])))
@@ -65,8 +67,8 @@ class MyDelegate(btle.DefaultDelegate):
         for i in data:
          print(i)
 
-     except:
-        print("Exception")
+     except Exception as e:
+        print("Exception:" + str(e))
      print("==============================")
      print("")
 
