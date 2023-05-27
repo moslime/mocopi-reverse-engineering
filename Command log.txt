@@ -1,9 +1,9 @@
 These are the commands that the app sends to the trackers.
 <BLE Handle> <HEX Data>
 0x0023        0100
-0x0020        7e0a181e04d99bc6870100000000
+0x0020        7e0a181e04d99bc6870100000000 - Set RTC
 0x0020        7e02181f02180000 - Get RTC
-0x0020        7e0a181e19db9bc6870100000000
+0x0020        7e0a181e19db9bc6870100000000 - Set RTC
 0x0020        7e02181f02180000 - Get RTC
 
 #This is the only command that needs to be sent to get data to stream. Need to figure out what all the other commands are *actually* for
