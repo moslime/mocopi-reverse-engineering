@@ -13,4 +13,4 @@ These are the commands that the app sends to the trackers.
 0x0020        7e02181f02180000 - Get RTC
 0x0020        7e02181f02180000 - Get RTC
 0x004a        0100
-0x0020        7e0209029ada
+0x0020        7e0209029ada - Get Battery
