@@ -28,4 +28,4 @@ IMUs (unsure if one or both are present) - [BMI270](https://www.bosch-sensortec.
 - The mocopi app uses the [SmartBond™ SUOTA](https://lpccs-docs.renesas.com/Tutorial_SDK6/suota_overview.html) protocol to update the trackers. If you extract the firmware from the mocopi app (filename: SI6285A_dev.img) you can use the [Renesas SUOTA](https://play.google.com/store/apps/details?id=com.dialog.suota) app to update the trackers manually. If you do this, don't mess with the default Parameter settings as editing them can permanently damage your tracker. Firmware files will not be provided because they can easily be extracted from the mocopi app and if you can do that you can understand the risks that come with doing an update like this.
 
 ## Credits
-Huge thanks to @PlatinumVsReality for reaching out and helping me get this all going.
+Huge thanks to [@PlatinumVsReality](https://github.com/PlatinumVsReality) for reaching out and helping me get this all going.
