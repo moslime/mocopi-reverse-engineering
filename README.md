@@ -14,7 +14,7 @@ Mocopi is a trademark owned by Sony. None of this is endorsed by Sony, nor are t
 - The sensors zero out their axes when the command to start the data stream is sent. It takes about a second to zero before the data starts streaming.
 - The mocopi app has lots of hardcoded time constraints and makes very heavy use of System.currentTimeMillis, which is not suitable for real-time applications. This points to the app itself being the culprit for the widespread drift problem (thx PlatinumVR for that tip). At a hardware level, the IMU being used seems to be very resistant to drift as the only thing that was causing it to visibly drift was very fast/sudden movements and hard impacts.
 - The sensors don't seem to be impacted at all by magnetic interference, disproving the theory that the drift comes from the mounting mechanism. A video of this can be found in the `resources` folder.
-- The default Bluetooth LE MTU is 20 bytes and the sensor sends 36 at a time. Make sure you set the MTU to 36 or greater in whatever you're using to get sensor data.
+- The default Bluetooth LE MTU is 20 bytes but the sensor sends 36 at a time. Make sure you set the MTU to 36 or greater in whatever you're using to get sensor data.
 
 ## Hardware Info
 BLE SoC - Might be the [DA14683](https://www.renesas.com/us/en/products/wireless-connectivity/bluetooth-low-energy/da14683-smartbond-bluetooth-low-energy-50-soc-enhanced-security) \
