@@ -29,7 +29,7 @@ Here's how the packet is structured:
 23-24 - `0x27 0x02` - -0.0672607421875 - Z value from the previous packet
 
 
-All of the following values are unknown. Here they're represented as unsigned ints
+All of the following values are unknown. Here they're represented as unsigned ints. It's likely that they are accelerometer XYZ data but that's not confirmed.
 25 - 0xE5 - 229
 26 - 0xAB - 171
 27 - 0x36 - 54
