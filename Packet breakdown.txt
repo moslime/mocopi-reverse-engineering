@@ -10,7 +10,7 @@ Here's how the packet is structured:
 
 1     - `0xB0` - 176 - Unknown, sometimes changes to 0x30 under unknown circumstances
 
-2-8   - `0x46 0x3E 0x63 0xD9 0x09 0x5A 0x17` - 6572922812710470 - Counter that increases by 1 with every packet sent. Is a unsigned integer 
+2-8   - `0x46 0x3E 0x63 0xD9 0x09 0x5A 0x17` - 6572922812710470 - Counter that increases with every packet sent. Is a unsigned integer 
 
 9-10  - `0x87 0x15` - -0.6727294921875 - W value of a quaternion
 
