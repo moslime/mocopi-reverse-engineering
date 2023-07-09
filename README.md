@@ -8,6 +8,7 @@ If you want to play around with the data, head over to the `scripts` folder and 
 Mocopi is a trademark owned by Sony. None of this is endorsed by Sony, nor are they affiliated with the people associated with this repository. All info in this repository is provided as is, without warranty. Nothing here should cause damage to your trackers; however, only use the info in this repository if you agree to assume the risks therein.
 
 ## General Info
+- FCC ID: https://fccid.io/PY7-35141E
 - The batteries in the trackers last around 18 hours and charge from 0-100 in around 50mins.
 - The sensors are all identical at a hardware and firmware level. The only difference is the colored plastic circle and the app will even let you assign a tracker to a different body part.
 - The sensors can be factory reset by quickly pressing the button 10-15 times (or until it blinks red and blue)
