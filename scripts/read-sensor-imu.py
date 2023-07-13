@@ -7,13 +7,16 @@ import requests
 import numpy as np
 import traceback
 
-# Change this to the MAC address of your tracker
-tracker_addr = '3C:38:F4:AE:B6:3D'
+# If you'd like to compare the numbers to the IMU in your phone, download phyphox https://phyphox.org/, start the acceleration (without g) experiment, 
+# allow remote access (3 dots > allow remote access), replace PP_ADDRESS with the IP of your phone and change phyphox to true.
+
+tracker_addr = '3C:38:F4:AE:B6:3D' # Tracker address
+PP_ADDRESS = "http://192.168.1.111:8080" # Phyphox device IP address
+formatted = True # Changing this to false will show each byte sperately as integers
+phyphox = False # True will print data from phyphox (only enable if you already have it set up!)
+
+# shouldnt need to mess with
 cmd_uuid = '0000ff00-0000-1000-8000-00805f9b34fb'
-PP_ADDRESS = "http://192.168.1.111:8080"
-# Changing this to false will show each byte sperately as integers
-formatted = True	
-phyphox = False
 quatRange = interp1d([-8192,8192],[-1,1])
 
 def hexToQuat(bytes):
