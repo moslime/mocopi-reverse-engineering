@@ -34,7 +34,7 @@ nv_read_TK_cal success
 ```
 
 ## Connecting / Tracking
-- `algo data` is printed around once every 2 seconds
+- `algo data` is printed around once every 2 seconds until disconnected/powered off
 ```
 2000/01/01 00:00:00SYS|RTC: current GMT time is:2000-01-01 00:00:00.010 Week:6.
 0000SYS|user mode
