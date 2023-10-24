@@ -28,18 +28,10 @@ Here's how the packet is structured:
 
 23-24 - `0x27 0x02` - -0.0672607421875 - Z value from the previous packet
 
-
-All of the following values are unknown. Here they're represented as unsigned ints. It's likely that they are accelerometer XYZ data but that's not confirmed.
-25 - 0xE5 - 229
-26 - 0xAB - 171
-27 - 0x36 - 54
-28 - 0xB6 - 182
-29 - 0x75 - 117
-30 - 0xB2 - 178
-31 - 0xD1 - 209
-32 - 0xB0 - 176
-33 - 0x22 - 34
-34 - 0xB6 - 182
-35 - 0x17 - 23
-36 - 0x9A - 154
-
+We're not sure which axes are which, we just know the following is acceleration
+25-26 - `0xE5 0xAB` - Axis 1
+27-28 - `0x36 0xB6` - Axis 2
+29-30 - `0x75 0xB2` - Axis 3
+31-32 - `0xD1 0xB0` - Axis 1 from the previous packet
+33-34 - `0x22 0xB6` - Axis 2 from the previous packet
+35-36 - `0x17 0x9A` - Axis 3 from the previous packet
