@@ -7,6 +7,9 @@ If you want to play around with the data, head over to the `scripts` folder and 
 ## Disclaimer
 Mocopi is a trademark owned by Sony. None of this is endorsed by Sony, nor are they affiliated with the people associated with this repository. All info in this repository is provided as is, without warranty. Nothing here should cause damage to your trackers; however, only use the info in this repository if you agree to assume the risks therein.
 
+## Contributing
+If you have any extra info, feel free to open an issue or pull request!
+
 ## General Info
 - FCC ID: https://fccid.io/PY7-35141E
 - The batteries in the trackers last around 18 hours and charge from 0-100 in around 50mins.
@@ -20,7 +23,7 @@ Mocopi is a trademark owned by Sony. None of this is endorsed by Sony, nor are t
 
 ## Hardware Info
 BLE SoC - [DA14697](https://www.renesas.com/us/en/products/wireless-connectivity/bluetooth-low-energy/da14697-multi-core-bluetooth-52-soc-system-power-management-unit)\
-Flash - Marked Q256JWY - [W25Q256JW](https://www.mouser.com/datasheet/2/949/w25q256jw_spi_revd_09042018-1489579.pdf)
+Flash - Marked Q256JWY - [W25Q256JW](https://www.mouser.com/datasheet/2/949/w25q256jw_spi_revd_09042018-1489579.pdf)\
 IMUs - [BMI270](https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bmi270-fl000.pdf) 
 - [ICM40608](https://static6.arrow.com/aropdfconversion/c4a55e5ba65360490f9914c80186aa28bc5c3857/icm-40608.pdf) is also mentioned in the FW, it's possible that some units have that one instead
 
