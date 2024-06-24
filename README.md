@@ -33,3 +33,7 @@ IMUs - [BMI270](https://www.bosch-sensortec.com/media/boschsensortec/downloads/p
 
 ## Credits
 Huge thanks to [@PlatinumVsReality](https://github.com/PlatinumVsReality) for reaching out and helping me get this all going.
+
+Thanks to the wonderful people at Teardown for x-raying the board and helping with some other fun stuff! Y'all know who you are
+
+https://www.crowdsupply.com/teardown/portland-2024
